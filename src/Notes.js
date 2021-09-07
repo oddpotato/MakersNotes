@@ -1,18 +1,17 @@
 
 class NoteList {
     constructor(){
-        this.everyNote = []
+        this.everyNote = ["note1 is a very long note that needs slicing", "note2"]
     }
 
     addNewNote(noteContent){
         let note = new Note(noteContent)
         this.everyNote.push(note.content)
+        console.log(this.everyNote);
     }
 
     displayAllNotes(){
-        this.everyNote.forEach((note) =>{
-            console.log(note.slice(0,19));
-        })
+        return this.everyNote.map(note => note.slice(0,19));
     }
 
     displayNote(index){
