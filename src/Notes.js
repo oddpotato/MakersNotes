@@ -1,7 +1,7 @@
 
 class NoteList {
     constructor(){
-        this.everyNote = ["note1", "note2"]
+        this.everyNote = ["note1 is a very long note that needs slicing", "note2"]
     }
 
     addNewNote(noteContent){

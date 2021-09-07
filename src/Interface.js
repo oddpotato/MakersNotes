@@ -1,35 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const myNoteList = new NoteList();
-  let notes = myNoteList.everyNote;
-  
   const viewNotes = () => {
     let str = '<ul>'
-    console.log(notes);
     notes.reverse().forEach(function(note) {
-      str += '<li>'+ note + '</li>';
+      str += '<li>'+ note.slice(0,19) + '</li>';
     });  
-  str += '</ul>';
-  document.querySelector("#noteContainer").innerHTML = str;
+    str += '</ul>';
+    document.querySelector("#singleNoteContainer").innerHTML = str;
   };
-  
+
+  const myNoteList = new NoteList();
+  let notes = myNoteList.everyNote;
   viewNotes();
 
+  const form  = document.querySelector('#addNewNote');
 
-const form  = document.querySelector('#addNewNote');
-
-form.addEventListener('submit', (event) => {
-  const newNote = document.querySelector('#newNote').value;
-  // change to new note
-  myNoteList.addNewNote("hello");
-
-  viewNotes();
-
-  event.preventDefault();
-    // handle the form data
-});
+  form.addEventListener('submit', (event) => {
+    const newNote = document.querySelector('#newNote').value;
+    myNoteList.addNewNote(newNote);
+    viewNotes();
+    event.preventDefault();
+  });
 
 })
 
-
-// form.submit();
+// user clicks on link/button to view individual note
+// event listener loads up chosen note (should we use displayNote function or just array?)
+// we call viewNote method to do the html part. Need to add in a div for view note
