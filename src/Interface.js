@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const viewNotes = () => {
+    document.querySelector("#singleNoteContainer").innerHTML = convertNotestoHTML();
+  };
+
+  const convertNotestoHTML = () => {
     let str = '<ul>'
     notes.reverse().forEach(function(note) {
       str += '<li>'+ note.slice(0,19) + '</li>';
     });  
     str += '</ul>';
-    document.querySelector("#singleNoteContainer").innerHTML = str;
-  };
+    return str;
+  }
 
   const myNoteList = new NoteList();
   let notes = myNoteList.everyNote;
