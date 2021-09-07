@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const myNoteList = new NoteList();
-  const notes = myNoteList.displayAllNotes();
+  let notes = myNoteList.everyNote;
   
   const viewNotes = () => {
     let str = '<ul>'
+    console.log(notes);
     notes.reverse().forEach(function(note) {
       str += '<li>'+ note + '</li>';
     });  
@@ -14,32 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
   
   viewNotes();
 
-})
 
-// document.querySelector('#addNewNote').addEventListener('click', () => {
-// 
-//   const addNewNote = myNoteList.addNewNote(NewNote);
-//   console.log(addNewNote);
-// 
-// })
-// 
-
-//const form = document.getElementById('subscribe');
-
-function isTrue() {
-  if (form != null) {
-    console.log('true');
-  }
-}
-
-const form  = document.getElementById('addNewNote');
+const form  = document.querySelector('#addNewNote');
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
+  const newNote = document.querySelector('#newNote').value;
+  // change to new note
+  myNoteList.addNewNote("hello");
+
+  viewNotes();
+
+  event.preventDefault();
     // handle the form data
 });
 
-form.submit();
+})
 
-console.log(form);
-isTrue();
+
+// form.submit();

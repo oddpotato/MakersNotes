@@ -1,12 +1,13 @@
 
 class NoteList {
     constructor(){
-        this.everyNote = ["this is my note balha blahabifeffe", "this another notes that we have taken"]
+        this.everyNote = ["note1", "note2"]
     }
 
     addNewNote(noteContent){
         let note = new Note(noteContent)
         this.everyNote.push(note.content)
+        console.log(this.everyNote);
     }
 
     displayAllNotes(){
