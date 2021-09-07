@@ -15,3 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
   viewNotes();
 
 })
+
+// document.querySelector('#addNewNote').addEventListener('click', () => {
+// 
+//   const addNewNote = myNoteList.addNewNote(NewNote);
+//   console.log(addNewNote);
+// 
+// })
+// 
+
+//const form = document.getElementById('subscribe');
+
+function isTrue() {
+  if (form != null) {
+    console.log('true');
+  }
+}
+
+const form  = document.getElementById('addNewNote');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    // handle the form data
+});
+
+form.submit();
+
+console.log(form);
+isTrue();
