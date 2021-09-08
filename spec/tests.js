@@ -7,29 +7,31 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Notes Tests")
 
   // NoteList can add notes
-  let notes1 = new NoteList
-  notes1.addNewNote("Hello, world!")
+  let notes1 = new NoteList;
+  notes1.addNewNote("Hello, world!");
 
   if (notes1.everyNote[0] == "Hello, world!") {
-    console.log("A NoteList can add a note")
+    console.log("A NoteList can add a note");
   } else {
-    console.log("Fail!!")
+    console.log("Fail!!");
   }
 
   // NoteList shows all notes
-  let notes2 = new NoteList
+  let notes2 = new NoteList;
 
-  let text1 = "Hello, world!"
-  let text2 = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"
+  let text1 = "Hello, world!";
+  let text2 = "How much wood would a woodchuck chuck?";
 
   notes2.addNewNote(text1)
   notes2.addNewNote(text2)
 
-  let array = [text1, text2]
+  let array = [text1, text2];
   let itWorks = true;
 
+  console.log(notes2.displayAllNotes())
+
   array.forEach((item, index) => {
-    if (notes2.everyNote[index] != item) {
+    if (notes2.displayAllNotes()[index] != item.slice(0, 19)) {
       itWorks = false;
     }
   })
