@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  noteList = new NoteList();
 
   const viewNotes = () => {
     document.querySelector("#singleNoteContainer").innerHTML = convertNotestoHTML();
@@ -7,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const convertNotestoHTML = () => {
     let str = '<ul>'
     array = myNoteList.displayAllNotes()
-    console.log(array);
+    // console.log(array);
     
     array.reverse().forEach((note) => {
     //myNoteList.displayAllNotes().reverse().forEach((note) => {
@@ -21,17 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
   let notes = myNoteList.displayAllNotes();
   viewNotes();
 
-  const form  = document.querySelector('#addNewNote');
+  // function viewAllNotes() {
+    // console.log("calling View All Notes");
+
+  form = document.querySelector('#addNewNote');
 
   form.addEventListener('submit', (event) => {
     let newNote = document.querySelector('#newNote').value;
-    myNoteList.addNewNote(newNote);
-    console.log(myNoteList.everyNote)
-    viewNotes();
-    //event.preventDefault();
+    myNoteList.addNewNote(newNote).then(() => {
+      viewNotes();
+    });
+    // console.log(myNoteList.everyNote)
+    event.preventDefault();
   });
 
+    // console.log(notes);
+
+    // notes.forEach((note) => {
+    //   newDiv = document.createElement("div");
+    //   newDiv.innerHTML = note
+    //   allNotesContainer.append(newDiv);
+    // })
+  // }
 })
+
 
 // user clicks on link/button to view individual note
 // event listener loads up chosen note (should we use displayNote function or just array?)
