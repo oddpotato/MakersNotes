@@ -6,7 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const convertNotestoHTML = () => {
     let str = '<ul>'
-    myNoteList.displayAllNotes().reverse().forEach((note) => {
+    array = myNoteList.displayAllNotes()
+    console.log(array);
+    
+    array.reverse().forEach((note) => {
+    //myNoteList.displayAllNotes().reverse().forEach((note) => {
       str += '<li>'+ note + '</li>';
     });  
     str += '</ul>';
@@ -22,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (event) => {
     let newNote = document.querySelector('#newNote').value;
     myNoteList.addNewNote(newNote);
+    console.log(myNoteList.everyNote)
     viewNotes();
     //event.preventDefault();
   });
