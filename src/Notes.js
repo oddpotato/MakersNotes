@@ -1,6 +1,6 @@
 class NoteList {
   constructor() {
-      this.everyNote = ["note1 is a very long note that needs slicing", "note2"];
+      this.everyNote = [];
   }
 
   addNewNote(content) {
@@ -26,7 +26,9 @@ class NoteList {
 class Note {
   constructor(noteContent) {
       this.content;
+
       let contentJSON = JSON.parse(`{"text":"${noteContent}"}`);
+
       async function emojify(content) {
         let response = await fetch('https://makers-emojify.herokuapp.com/', {
           method: 'POST',
@@ -35,10 +37,11 @@ class Note {
           },
           body: JSON.stringify(content),
         });
+
         let data = await response.json();
         return data.emojified_text;
     }
-​
+
     emojify(contentJSON).then((value) => this.content = value);   
   }
 }
