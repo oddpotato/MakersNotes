@@ -10,6 +10,9 @@ class NoteList {
 
   displayAllNotes() { 
     let notes = [];
+    if (this.everyNote.length === 0){
+      return ["this is an empty array"]
+    }
       this.everyNote.forEach((note) => {
           notes.push(note.content.slice(0,19));
       })

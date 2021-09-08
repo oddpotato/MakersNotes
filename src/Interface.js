@@ -6,24 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const convertNotestoHTML = () => {
     let str = '<ul>'
-    notes.reverse().forEach(function(note) {
-      str += '<li>'+ note.slice(0,19) + '</li>';
+    array = myNoteList.displayAllNotes()
+    console.log(array);
+    
+    array.reverse().forEach((note) => {
+    //myNoteList.displayAllNotes().reverse().forEach((note) => {
+      str += '<li>'+ note + '</li>';
     });  
     str += '</ul>';
     return str;
   }
 
   const myNoteList = new NoteList();
-  let notes = myNoteList.everyNote;
+  let notes = myNoteList.displayAllNotes();
   viewNotes();
 
   const form  = document.querySelector('#addNewNote');
 
   form.addEventListener('submit', (event) => {
-    const newNote = document.querySelector('#newNote').value;
+    let newNote = document.querySelector('#newNote').value;
     myNoteList.addNewNote(newNote);
+    console.log(myNoteList.everyNote)
     viewNotes();
-    event.preventDefault();
+    //event.preventDefault();
   });
 
 })
