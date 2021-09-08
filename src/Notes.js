@@ -41,7 +41,6 @@ class Note {
         let data = await response.json();
         return data.emojified_text;
     }
-
     emojify(contentJSON).then((value) => this.content = value);   
   }
 }
