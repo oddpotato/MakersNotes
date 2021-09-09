@@ -31,8 +31,17 @@ body {
   }
 
 
-input[type=text]{
-    color: darkblue;
+input[type=textarea]{
+    border-width: 2.5px;
+    border-style: inset;
+    color: #00008b;
+    width: 50%;
+    height: 200px;
+    padding: 12px 20px;
+    border-color: #00008b;
+    border-radius: 30px;
+    outline: none;
+    overflow: auto;
   }
 
 a:hover{
