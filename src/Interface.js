@@ -10,21 +10,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let list = document.createElement("ul");
 
-    myNoteList.displayAllNotes().reverse().forEach((note, index) => {
+    myNoteList.all().reverse().forEach((note) => {
       let listItem = document.createElement("li");
 
-      listItem.innerHTML = note;
-      listItem.setAttribute("id", `note${index}`);
+      listItem.innerHTML = note.content.slice(0,19);
+      listItem.setAttribute("id", `note${note.id}`);
+
       listItem.addEventListener("click", () => {
-        console.log(`Clicked note ${index}`);
+        console.log(`Clicked note ${note.id}`);
+        openNote(note);
       })
-      
+
       list.appendChild(listItem);
     })
 
     noteContainer.appendChild(list);
 
     // document.querySelector("#singleNoteContainer").innerHTML = convertNotestoHTML();
+  };
+
+  const openNote = (note) => {
+
+    let listItem = document.querySelector(`#note${note.id}`);
+    let wholeNoteDiv = document.createElement("div");
+    
+    wholeNoteDiv.innerHTML = note.content;
+
+    listItem.appendChild(wholeNoteDiv);
   };
 
   // const convertNotestoHTML = () => {
@@ -47,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (event) => {
     let newNote = document.querySelector('#newNote').value;
+
     myNoteList.addNewNote(newNote).then(() => {
       viewNotes();
     });
