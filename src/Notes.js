@@ -46,7 +46,6 @@ class Note {
     })
     .then(response => response.json())
     .then(data => {
-      // console.log('Success:', data);
       this.content = data.emojified_text;
     })
 

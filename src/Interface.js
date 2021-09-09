@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let notes = myNoteList.displayAllNotes();
   viewNotes();
 
-  // function viewAllNotes() {
-    // console.log("calling View All Notes");
-
   form = document.querySelector('#addNewNote');
 
   form.addEventListener('submit', (event) => {
@@ -32,18 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     myNoteList.addNewNote(newNote).then(() => {
       viewNotes();
     });
-    // console.log(myNoteList.everyNote)
     event.preventDefault();
   });
-
-    // console.log(notes);
-
-    // notes.forEach((note) => {
-    //   newDiv = document.createElement("div");
-    //   newDiv.innerHTML = note
-    //   allNotesContainer.append(newDiv);
-    // })
-  // }
 })
 
 

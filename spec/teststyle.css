@@ -1,0 +1,44 @@
+body {
+  background-color:lightslategrey;
+  font-family: monospace;
+  line-height: 2em;
+}
+
+.tester {
+  background-color: ghostwhite;
+  padding-bottom: 2em;
+  margin: 2em;
+  border: 1px darkslategrey solid;
+}
+
+.test-group, .tester-heading {
+  padding-left: 0.8em;
+}
+
+.tester-heading {
+  background-color: gainsboro;
+  color: darkslategrey;
+  font-size: 1.8em;
+  font-weight: 600;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  margin-bottom: 1em;
+  border-bottom: 2px darkslategrey dotted;
+}
+
+.outcome {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.passed-tests .outcome {
+  color: green;
+}
+
+.failed-tests .outcome {
+  color: red;
+}
+
+.message {
+  font-size: 1.3em;
+}
