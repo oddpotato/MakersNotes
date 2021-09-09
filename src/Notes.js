@@ -6,9 +6,12 @@ class NoteList {
   addNewNote(content) {
       let newNote = new Note(content);
       this.everyNote.push(newNote);
+
+      return newNote.emojify();
   }
 
-  displayAllNotes() { 
+  displayAllNotes() {
+    console.log("Calling displayAllNotes()")
     let notes = [];
     if (this.everyNote.length === 0){
       return ["this is an empty array"]
@@ -21,29 +24,32 @@ class NoteList {
   }
 
   displayNote(index) {
-      console.log(this.everyNote[index]); 
+      // console.log(this.everyNote[index]); 
       return this.everyNote[index];
   }
 }
 
 class Note {
   constructor(noteContent) {
-      this.content;
+    this.content = noteContent;
+  }
 
-      let contentJSON = JSON.parse(`{"text":"${noteContent}"}`);
+  emojify() {
+    let contentJSON = JSON.parse(`{"text":"${this.content}"}`);
 
-      async function emojify(content) {
-        let response = await fetch('https://makers-emojify.herokuapp.com/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(content),
-        });
+    let promise = fetch('https://makers-emojify.herokuapp.com/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contentJSON),
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log('Success:', data);
+      this.content = data.emojified_text;
+    })
 
-        let data = await response.json();
-        return data.emojified_text;
-    }
-    emojify(contentJSON).then((value) => this.content = value);   
+    return promise;
   }
 }

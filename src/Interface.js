@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  noteList = new NoteList();
 
   const viewNotes = () => {
     document.querySelector("#singleNoteContainer").innerHTML = convertNotestoHTML();
@@ -7,10 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const convertNotestoHTML = () => {
     let str = '<ul>'
     array = myNoteList.displayAllNotes()
-    console.log(array);
     
     array.reverse().forEach((note) => {
-    //myNoteList.displayAllNotes().reverse().forEach((note) => {
       str += '<li>'+ note + '</li>';
     });  
     str += '</ul>';
@@ -21,16 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let notes = myNoteList.displayAllNotes();
   viewNotes();
 
-  const form  = document.querySelector('#addNewNote');
+  form = document.querySelector('#addNewNote');
 
   form.addEventListener('submit', (event) => {
     let newNote = document.querySelector('#newNote').value;
-    myNoteList.addNewNote(newNote);
-    console.log(myNoteList.everyNote)
-    viewNotes();
-    //event.preventDefault();
+    myNoteList.addNewNote(newNote).then(() => {
+      viewNotes();
+    });
+    event.preventDefault();
   });
-
 })
 
 // user clicks on link/button to view individual note
