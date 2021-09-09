@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // create a div to hold the full text of the note
     let wholeNoteDiv = document.createElement("div");
 
-    // create a close button for closing that div, and give it a sensible class name
+    // create a close button for closing that div
+    // and give it some text and a sensible class name
     let closeButton = document.createElement("button");
+    closeButton.innerHTML = "X";
     closeButton.setAttribute("class", "close-note-button");
 
     // add an event listener to the close button to call closeNote() on click
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // call closeNote() passing in the html id of the note list item
       closeNote(`note${note.id}`);
-    })
+    });
 
     // give the whole note div a sensible class name
     wholeNoteDiv.setAttribute("class", "full-note");
