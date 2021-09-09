@@ -3,24 +3,25 @@
   <head>
     <title>Test Output</title>
     <link rel="stylesheet" href="teststyle.css">
-    
+  </head>
+  <body>
     <script src="./Tester.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        Testers.all.forEach((tester) => {
-          tester.showResults();
-        })
-      });
-    </script>
 
     <!-- include source files here... -->
     <script src="../src/Notes.js"></script>
 
+    <!-- include test files here... -->
+    <script src="./NoteTests.js"></script>
+    <script src="./NoteListTests.js"></script>
 
-    <!-- include spec files here... -->
-    <script src="./Tests.js"></script>
-  </head>
-  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(function(){
+          Testers.all.forEach((tester) => {
+            tester.showResults();
+          })
+        }, 500);
+      });
+    </script>
   </body>
 </html>

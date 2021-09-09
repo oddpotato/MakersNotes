@@ -38,7 +38,7 @@ class NoteList {
 
 class Note {
   constructor(noteContent) {
-    this.id;
+    this.id = null;
     this.content = noteContent;
   }
 
