@@ -1,7 +1,15 @@
 body {
     background-color: #dfe86d;
     font-family: 'Roboto Mono', monospace;
-  }  
+    background-image: url('https://wallpaperaccess.com/full/2774021.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: center;
+    height: 1400px; /* You must set a specified height */
+    background-blend-mode: lighten;  This looked hardcore
+    /* opacity: 0.3; */
+    }
 
   h1 {
     background-color: lightblue;
@@ -21,3 +29,4 @@ body {
       text-align: left;
       margin: auto;
   }
+
