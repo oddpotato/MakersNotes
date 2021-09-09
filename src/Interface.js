@@ -2,20 +2,42 @@ document.addEventListener('DOMContentLoaded', () => {
   noteList = new NoteList();
 
   const viewNotes = () => {
-    document.querySelector("#singleNoteContainer").innerHTML = convertNotestoHTML();
+    let noteContainer = document.querySelector("#singleNoteContainer")
+
+    while (noteContainer.firstChild) {
+      noteContainer.removeChild(noteContainer.firstChild);
+    }
+
+    let list = document.createElement("ul");
+
+    myNoteList.displayAllNotes().reverse().forEach((note, index) => {
+      let listItem = document.createElement("li");
+
+      listItem.innerHTML = note;
+      listItem.setAttribute("id", `note${index}`);
+      listItem.addEventListener("click", () => {
+        console.log(`Clicked note ${index}`);
+      })
+      
+      list.appendChild(listItem);
+    })
+
+    noteContainer.appendChild(list);
+
+    // document.querySelector("#singleNoteContainer").innerHTML = convertNotestoHTML();
   };
 
-  const convertNotestoHTML = () => {
-    let str = '<ul>'
-    array = myNoteList.displayAllNotes()
+  // const convertNotestoHTML = () => {
+  //   let str = '<ul>'
+  //   array = myNoteList.displayAllNotes()
     
-    array.reverse().forEach((note) => {
-      note_div = document.createElement("li")
-      // str += '<li>'+ note + '</li>';
-    });  
-    str += '</ul>';
-    return str;
-  }
+  //   array.reverse().forEach((note) => {
+  //     // note_div = document.createElement("li")
+  //     str += '<li>'+ note + '</li>';
+  //   });  
+  //   str += '</ul>';
+  //   return str;
+  // }
 
   const myNoteList = new NoteList();
   let notes = myNoteList.displayAllNotes();
