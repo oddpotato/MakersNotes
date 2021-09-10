@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     array = myNoteList.displayAllNotes()
     
     array.reverse().forEach((note) => {
-      str += '<li>'+ note + '</li>';
+      str += '<li>'+ note + '</li>' + '<hr>';
     });  
     str += '</ul>';
     return str;

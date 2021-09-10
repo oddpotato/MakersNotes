@@ -1,37 +1,59 @@
 body {
     background-color: #dfe86d;
-    font-family: 'Roboto Mono', monospace;
+    font-family: Chalkduster, fantasy;
+    color: #00008b;
     background-image: url('https://wallpaperaccess.com/full/2774021.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: center;
-    height: 1400px; /* You must set a specified height */
+    height: 1400px;
     background-blend-mode: lighten;
-    /* opacity: 0.3; */
     }
 
   h1 {
     background-color: lightblue;
     text-align: center;
   }
+
+  h2 {
+    background-color: lightblue;
+    text-align: left;
+    margin: auto;
+    width: 80%;
+  }
   
   div {
-    background-color: lightblue;
+    text-align: center;
   }
+
+  ul {
+    list-style-position: inside;
+    list-style-type: square;
+  }
+
+  hr {
+    color: #00008b;
+    border: 1px dashed;
+    width: 90%;
+    text-align: center;
+  }
+
   
   p {
     background-color: yellow;
   }
 
-  .allNotesContainer {
-      background-color: lightyellow;
+  #allNotesContainer {
+      background-color: lightblue;
       text-align: left;
       margin: auto;
   }
 
 
 input[type=textarea]{
+    font-family: Chalkduster, fantasy;
+    background-color: lightblue;
     border-width: 2.5px;
     border-style: inset;
     color: #00008b;
@@ -54,5 +76,8 @@ a:hover{
 }
 
 #submit{
+  font-family: Chalkduster, fantasy;
   font-size: 26px;
+  background-color: #00008b;
+  color: lightblue;
 }
