@@ -50,7 +50,6 @@ body {
       margin: auto;
   }
 
-
 input[type=textarea]{
     font-family: Chalkduster, fantasy;
     background-color: lightblue;
@@ -64,6 +63,7 @@ input[type=textarea]{
     border-radius: 30px;
     outline: none;
     overflow: auto;
+    rows: 8;
   }
 
 a:hover{

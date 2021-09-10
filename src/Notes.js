@@ -1,17 +1,25 @@
 class NoteList {
   constructor() {
+      this.lastNoteId = 0;
       this.everyNote = [];
   }
 
   addNewNote(content) {
       let newNote = new Note(content);
-      this.everyNote.push(newNote);
+      newNote.id = this.lastNoteId;
 
+      this.everyNote.push(newNote);
+      this.lastNoteId ++;
+
+      console.log(newNote);
       return newNote.emojify();
   }
 
+  all() {
+    return this.everyNote;
+  }
+
   displayAllNotes() {
-    console.log("Calling displayAllNotes()")
     let notes = [];
     if (this.everyNote.length === 0){
       return ["No notes have been added yet!"]
@@ -24,17 +32,18 @@ class NoteList {
   }
 
   displayNote(index) {
-      // console.log(this.everyNote[index]); 
       return this.everyNote[index];
   }
 }
 
 class Note {
   constructor(noteContent) {
-    this.content = noteContent;
+    this.id;
+    this.content = noteContent.replaceAll("\n", "\\n");
   }
 
   emojify() {
+//    let newContent = this.content.replace("\n", "\\n");
     let contentJSON = JSON.parse(`{"text":"${this.content}"}`);
 
     let promise = fetch('https://makers-emojify.herokuapp.com/', {
@@ -46,8 +55,7 @@ class Note {
     })
     .then(response => response.json())
     .then(data => {
-      // console.log('Success:', data);
-      this.content = data.emojified_text;
+      this.content = data.emojified_text.replaceAll("\n", "<br>");
     })
 
     return promise;
