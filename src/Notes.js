@@ -31,7 +31,7 @@ class NoteList {
 
     this.everyNote.forEach((note) => {
       notes.push(note.content.slice(0,19));
-    })
+      })
 
     return notes;
   }
