@@ -2,7 +2,8 @@
   <html>
     <head>
     <meta charset="utf-8" />
-    <title>Note App</title>
+    <title>Nassau Notes</title>
+    <link rel="shortcut icon" type="image/ico" href="images/logo.ico"/>
     <!----
     <link rel="stylesheet" href="..\public\style.css" type = "text/css"/>
     -->
@@ -12,21 +13,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   </head>
   <body>
-    <h1 id="mainTitle">Note app</h1>
+    <div>
+    <h1 id="mainTitle">Nassau Notes</h1>
     <form id="addNewNote">
       Create a new note: <br>
       <!--- <textarea id="newNote" rows="8" placeholder="Write a new note here" editable></textarea> ---->
       <textarea id="newNote" placeholder="Write a new note here" editable></textarea>
     <br>
-    <input id="submit" type=submit value="Add note">
+    <input id="submit" type=submit value="Add Note!">
     </form>
 
 
     <br>
-    <div id="singleNoteContainer"></div>
-    <div id="allNotesContainer"></div>
+    <h2 id="singleNoteContainer"></h2>
+    <h2 id="allNotesContainer"></h2>
 
     <script src="src/Notes.js"></script>
     <script src="src/Interface.js"></script>
+    </div>
   </body>
 </html>

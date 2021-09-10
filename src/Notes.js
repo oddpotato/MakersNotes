@@ -26,7 +26,7 @@ class NoteList {
   displayAllNotes() {
     let notes = [];
     if (this.everyNote.length === 0){
-      return ["this is an empty array"]
+      return ["No notes have been added yet!"]
     }
 
     this.everyNote.forEach((note) => {
@@ -56,7 +56,7 @@ class Note {
     })
     .then(response => response.json())
     .then(data => {
-      this.content = data.emojified_text;
+      this.content = data.emojified_text.replaceAll("\n", "<br>");
     })
 
     return promise;

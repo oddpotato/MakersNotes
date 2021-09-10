@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let list = document.createElement("ul");
 
     myNoteList.all().reverse().forEach((note) => {
+      removeBreaks = () => {note.content.replaceAll(/(\r\n|\n|\r)/gm, "");}
+      // create a new empty list item
       let listItem = document.createElement("li");
       let listItemText = document.createElement("span");
       let hr = document.createElement("hr");
