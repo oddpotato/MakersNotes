@@ -50,7 +50,8 @@ body {
       margin: auto;
   }
 
-input[type=textarea]{
+/*input[type=textarea]*/
+textarea{
     font-family: Chalkduster, fantasy;
     background-color: lightblue;
     border-width: 2.5px;
