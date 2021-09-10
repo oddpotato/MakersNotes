@@ -12,14 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     myNoteList.all().reverse().forEach((note) => {
       note.content.replaceAll("<br>", "");
+
+      let listItemButton = document.createElement("button");
+      //listItemButton.innerHTML = "";
+      
+      //if (note.content.length > 20) {
+       // listItemButton = document.createElement("button");
+       // listItemButton.setAttribute("class", "open-note-button");
+      //  listItemButton.innerHTML = "Show More"
+        
+       // listItemButton.addEventListener("click", () => {
+      //    if (listItem.classList.contains("closed")) { openNote(note) }
+      //  })
+      //}
+      
       // create a new empty list item
       let listItem = document.createElement("li");
       let listItemText = document.createElement("span");
-      let listItemButton = document.createElement("button");
+      // let listItemButton = document.createElement("button");
       let hr = document.createElement("hr");
 
       listItemButton.setAttribute("class", "open-note-button");
-      listItemButton.innerHTML = "Show More"
+      listItemButton.innerHTML = "Expand"
       
       listItemText.innerHTML = slicedString(note.content);
       listItemText.setAttribute("class", "short-note-text");
@@ -44,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let dots = "";
     
     if (str.length > 20) {
-      dots = "...";
+      dots = " ...  ";
     }
     
     let removeBreaks = str.replaceAll("<br>", " ");
@@ -85,16 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
       listItem.removeChild(listItem.firstChild);
     }
 
-    let listItemButton = document.createElement("button");
     let listItemText = document.createElement("span");
-
+      let listItemButton = document.createElement("button");
     listItemText.setAttribute("class", "short-note-text");
     listItemButton.setAttribute("class", "open-note-button");
-    listItemButton.innerHTML = "Show More";
+    listItemButton.innerHTML = "Expand";
     
-      listItemButton.addEventListener("click", () => {
-        if (listItem.classList.contains("closed")) { openNote(note) }
-      })
+    listItemButton.addEventListener("click", () => {
+      if (listItem.classList.contains("closed")) { openNote(note) }
+    })
     
     listItemText.innerHTML = slicedString(note.content);
     listItemText.addEventListener("click", () => {

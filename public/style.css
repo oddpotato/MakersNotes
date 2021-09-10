@@ -96,5 +96,9 @@ button:hover{
 
 .open .short-note-text {
   display: none;
-  color: yellow;
 }
+
+.open .open-note-button {
+  display: none;
+}
+
