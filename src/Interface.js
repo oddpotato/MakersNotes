@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let closeButton = document.createElement("button");
 
-    closeButton.innerHTML = "X";
+    closeButton.innerHTML = "Show Less";
     closeButton.setAttribute("class", "close-note-button");
     closeButton.addEventListener("click", () => {
       closeNote(note);

@@ -82,3 +82,10 @@ a:hover{
   background-color: #00008b;
   color: lightblue;
 }
+
+button{
+  font-family: Chalkduster, fantasy;
+  font-size: 14px;
+  background-color: #00008b;
+  color: lightblue;
+}
