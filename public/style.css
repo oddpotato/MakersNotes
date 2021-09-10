@@ -29,7 +29,7 @@ body {
 
   ul {
     list-style-position: inside;
-    list-style-type: square;
+    list-style-type: none;
   }
 
   hr {
@@ -88,8 +88,18 @@ button{
   font-size: 14px;
   background-color: #00008b;
   color: lightblue;
+  padding-left: 1em;
 }
 
 button:hover{
   box-shadow: 0 12px 16px 0 rgba(89, 70, 201, 0.24),0 17px 50px 0 rgba(73, 24, 129, 0.19);  
 }
+
+.open .short-note-text {
+  display: none;
+}
+
+.open .open-note-button {
+  display: none;
+}
+
