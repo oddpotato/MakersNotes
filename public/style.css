@@ -93,3 +93,8 @@ button{
 button:hover{
   box-shadow: 0 12px 16px 0 rgba(89, 70, 201, 0.24),0 17px 50px 0 rgba(73, 24, 129, 0.19);  
 }
+
+li .open .short-note-text {
+  display: none;
+  color: yellow;
+}

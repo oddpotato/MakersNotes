@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let hr = document.createElement("hr");
       
       listItemText.innerHTML = slicedString(note.content);
+      listItemText.setAttribute("class", "short-note-text");
       listItemText.addEventListener("click", () => {
         if (listItem.classList.contains("closed")) { openNote(note) }
       })
@@ -34,8 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const slicedString = (str) => {
-    let removeBreaks = str.replaceAll("<br>", "");
-    return removeBreaks.slice(0, 19);
+    let dots = "";
+    
+    if (str.length > 20) {
+      dots = "...";
+    }
+    
+    let removeBreaks = str.replaceAll("<br>", " ");
+    return removeBreaks.slice(0, 19) + dots;
   }
 
   const openNote = (note) => {
@@ -45,9 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
     listItem.classList.add("open");
     
     let wholeNoteDiv = document.createElement("div");
-
     let closeButton = document.createElement("button");
-
+    let textDiv = document.createElement("div");
+    let buttonDiv = document.createElement("div");
+    
     closeButton.innerHTML = "Show Less";
     closeButton.setAttribute("class", "close-note-button");
     closeButton.addEventListener("click", () => {
@@ -55,9 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     wholeNoteDiv.setAttribute("class", "full-note");
-    wholeNoteDiv.innerHTML = note.content;
+    textDiv.innerHTML = note.content;
 
-    wholeNoteDiv.appendChild(closeButton);
+    buttonDiv.appendChild(closeButton);
+
+    wholeNoteDiv.appendChild(textDiv);
+    wholeNoteDiv.appendChild(buttonDiv);
     listItem.appendChild(wholeNoteDiv);
   };
 
@@ -69,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     let listItemText = document.createElement("span");
+    listItemText.setAttribute("class", "short-note-text");
     
     listItemText.innerHTML = slicedString(note.content);
     listItemText.addEventListener("click", () => {
