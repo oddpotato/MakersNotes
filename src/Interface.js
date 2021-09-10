@@ -24,14 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
       let listItemText = document.createElement("span");
       
       // set the list item text to the sliced note content
-      listItemText.innerHTML = note.content.slice(0, 19);
+      listItemText.innerHTML = slicedString(note.content);
 
+      // add a 'clickable' class to the list item
+      listItem.classList.add("closed");
+      
       // set the list item class to "note" + the note id, i.e, "note1", "note2", etc
       listItem.setAttribute("id", `note${note.id}`);
 
       // add an event listener to ONLY the list item text, so it calls openNote() when clicked
       listItemText.addEventListener("click", () => {
-        openNote(note);
+        if (listItem.classList.contains("closed")) { openNote(note) }
       })
 
       // finally, add the text to the list item...
@@ -45,11 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
     noteContainer.appendChild(list);
   };
 
+  const slicedString = (str) => {
+    return str.slice(0, 19);
+  }
+
   // this function takes a note OBJECT!
   const openNote = (note) => {
     // find the note with the id "note" + this particular note.id
     let listItem = document.querySelector(`#note${note.id}`);
 
+    // set the list item class to open (meaning it won't be clickable any more)
+    listItem.classList.remove("closed");
+    listItem.classList.add("open");
+    
     // create a div to hold the full text of the note
     let wholeNoteDiv = document.createElement("div");
 
@@ -63,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButton.addEventListener("click", () => {
 
       // call closeNote() passing in the html id of the note list item
-      closeNote(`note${note.id}`);
+      closeNote(note);
     });
 
     // give the whole note div a sensible class name
@@ -80,15 +91,29 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // this function takes a string which is the html id of a particular list item
-  const closeNote = (noteId) => {
+  const closeNote = (note) => {
     // find the note with the id "note" + this particular note.id
-    let listItem = document.querySelector(`#${noteId}`);
+    let listItem = document.querySelector(`#note${note.id}`);
 
-    // remove the full text div from the list item
-    listItem.removeChild(listItem.firstChild);
+    while (listItem.firstChild) {
+      listItem.removeChild(listItem.firstChild);
+    }
+    
+    let listItemText = document.createElement("span");
+    
+    listItemText.innerHTML = slicedString(note.content);
 
+      // add an event listener to ONLY the list item text, so it calls openNote() when clicked
+      listItemText.addEventListener("click", () => {
+        if (listItem.classList.contains("closed")) { openNote(note) }
+      })
+
+    listItem.classList.remove("open");
+    listItem.classList.add("closed");
+
+    listItem.appendChild(listItemText);
     // call viewNotes again to regenerate the note list
-    viewNotes();
+    //viewNotes();
   }
 
   // const convertNotestoHTML = () => {
@@ -111,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (event) => {
     let newNote = document.querySelector('#newNote').value;
-    console.log(newNote)
+    // console.log(newNote)
     myNoteList.addNewNote(newNote).then(() => {
       viewNotes();
     });

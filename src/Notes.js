@@ -5,18 +5,26 @@ class NoteList {
   }
 
   addNewNote(content) {
-      let newNote = new Note(content);
-      newNote.id = this.lastNoteId;
+    let newNote = new Note(content);
 
-      this.everyNote.push(newNote);
-      this.lastNoteId ++;
+    newNote.id = this.lastNoteId;
 
-      console.log(newNote);
-      return newNote.emojify();
+    this.everyNote.push(newNote);
+    this.lastNoteId ++;
+
+    console.log(this.everyNote);
+    console.log(this.all());
+    console.log(this.noteWithId(newNote.id));
+
+    return newNote.emojify();
   }
 
   all() {
     return this.everyNote;
+  }
+
+  noteWithId(id) {
+    this.everyNote.find((note) => note.id == id)
   }
 
   displayAllNotes() {
@@ -31,8 +39,8 @@ class NoteList {
     return notes;
   }
 
-  displayNote(index) {
-      return this.everyNote[index];
+  displayNote(id) {
+    return this.everyNote.find(note => note.id == id)
   }
 }
 
