@@ -15,11 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
       // create a new empty list item
       let listItem = document.createElement("li");
       let listItemText = document.createElement("span");
+      let listItemButton = document.createElement("button");
       let hr = document.createElement("hr");
+
+      listItemButton.setAttribute("class", "open-note-button");
+      listItemButton.innerHTML = "Show More"
       
       listItemText.innerHTML = slicedString(note.content);
       listItemText.setAttribute("class", "short-note-text");
-      listItemText.addEventListener("click", () => {
+
+      listItemButton.addEventListener("click", () => {
         if (listItem.classList.contains("closed")) { openNote(note) }
       })
       
@@ -27,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       listItem.setAttribute("id", `note${note.id}`);
 
       listItem.appendChild(listItemText);
+      listItem.appendChild(listItemButton);
       list.appendChild(listItem);
       list.appendChild(hr);
     })
@@ -78,9 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
     while (listItem.firstChild) {
       listItem.removeChild(listItem.firstChild);
     }
-    
+
+    let listItemButton = document.createElement("button");
     let listItemText = document.createElement("span");
+
     listItemText.setAttribute("class", "short-note-text");
+    listItemButton.setAttribute("class", "open-note-button");
+    listItemButton.innerHTML = "Show More";
+    
+      listItemButton.addEventListener("click", () => {
+        if (listItem.classList.contains("closed")) { openNote(note) }
+      })
     
     listItemText.innerHTML = slicedString(note.content);
     listItemText.addEventListener("click", () => {
@@ -91,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     listItem.classList.add("closed");
 
     listItem.appendChild(listItemText);
+    listItem.appendChild(listItemButton);
   }
 
   const myNoteList = new NoteList();
