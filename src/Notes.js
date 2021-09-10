@@ -12,10 +12,6 @@ class NoteList {
     this.everyNote.push(newNote);
     this.lastNoteId ++;
 
-    console.log(this.everyNote);
-    console.log(this.all());
-    console.log(this.noteWithId(newNote.id));
-
     return newNote.emojify();
   }
 
@@ -32,15 +28,12 @@ class NoteList {
     if (this.everyNote.length === 0){
       return ["this is an empty array"]
     }
-      this.everyNote.forEach((note) => {
-          notes.push(note.content.slice(0,19));
-      })
+
+    this.everyNote.forEach((note) => {
+      notes.push(note.content.slice(0,19));
+    })
 
     return notes;
-  }
-
-  displayNote(id) {
-    return this.everyNote.find(note => note.id == id)
   }
 }
 
