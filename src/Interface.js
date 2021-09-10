@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     myNoteList.all().reverse().forEach((note) => {
       let listItem = document.createElement("li");
       let listItemText = document.createElement("span");
+      let hr = document.createElement("hr");
       
       listItemText.innerHTML = slicedString(note.content);
       listItemText.addEventListener("click", () => {
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       listItem.appendChild(listItemText);
       list.appendChild(listItem);
+      list.appendChild(hr);
     })
 
     noteContainer.appendChild(list);
