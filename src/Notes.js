@@ -5,18 +5,22 @@ class NoteList {
   }
 
   addNewNote(content) {
-      let newNote = new Note(content);
-      newNote.id = this.lastNoteId;
+    let newNote = new Note(content);
 
-      this.everyNote.push(newNote);
-      this.lastNoteId ++;
+    newNote.id = this.lastNoteId;
 
-      console.log(newNote);
-      return newNote.emojify();
+    this.everyNote.push(newNote);
+    this.lastNoteId ++;
+
+    return newNote.emojify();
   }
 
   all() {
     return this.everyNote;
+  }
+
+  noteWithId(id) {
+    this.everyNote.find((note) => note.id == id)
   }
 
   displayAllNotes() {
@@ -24,15 +28,12 @@ class NoteList {
     if (this.everyNote.length === 0){
       return ["No notes have been added yet!"]
     }
-      this.everyNote.forEach((note) => {
-          notes.push(note.content.slice(0,19));
+
+    this.everyNote.forEach((note) => {
+      notes.push(note.content.slice(0,19));
       })
 
     return notes;
-  }
-
-  displayNote(index) {
-      return this.everyNote[index];
   }
 }
 
