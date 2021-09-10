@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let list = document.createElement("ul");
 
     myNoteList.all().reverse().forEach((note) => {
-      removeBreaks = () => {note.content.replaceAll(/(\r\n|\n|\r)/gm, "");}
+      note.content.replaceAll("<br>", "");
       // create a new empty list item
       let listItem = document.createElement("li");
       let listItemText = document.createElement("span");
@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const slicedString = (str) => {
-    return str.slice(0, 19);
+    let removeBreaks = str.replaceAll("<br>", "");
+    return removeBreaks.slice(0, 19);
   }
 
   const openNote = (note) => {
