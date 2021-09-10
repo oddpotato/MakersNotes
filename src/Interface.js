@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (event) => {
     let newNote = document.querySelector('#newNote').value;
-
+    console.log(newNote)
     myNoteList.addNewNote(newNote).then(() => {
       viewNotes();
     });

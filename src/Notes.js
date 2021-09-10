@@ -39,10 +39,11 @@ class NoteList {
 class Note {
   constructor(noteContent) {
     this.id;
-    this.content = noteContent;
+    this.content = noteContent.replaceAll("\n", "\\n");
   }
 
   emojify() {
+//    let newContent = this.content.replace("\n", "\\n");
     let contentJSON = JSON.parse(`{"text":"${this.content}"}`);
 
     let promise = fetch('https://makers-emojify.herokuapp.com/', {

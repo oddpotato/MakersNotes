@@ -31,7 +31,7 @@ body {
   }
 
 
-input[type=textarea]{
+textarea{
     border-width: 2.5px;
     border-style: inset;
     color: #00008b;
@@ -42,6 +42,7 @@ input[type=textarea]{
     border-radius: 30px;
     outline: none;
     overflow: auto;
+    rows: 8;
   }
 
 a:hover{
