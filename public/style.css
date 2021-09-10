@@ -88,6 +88,7 @@ button{
   font-size: 14px;
   background-color: #00008b;
   color: lightblue;
+  padding-left: 1em;
 }
 
 button:hover{
