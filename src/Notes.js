@@ -55,7 +55,7 @@ class Note {
     })
     .then(response => response.json())
     .then(data => {
-      this.content = data.emojified_text;
+      this.content = data.emojified_text.replaceAll("\n", "<br>");
     })
 
     return promise;

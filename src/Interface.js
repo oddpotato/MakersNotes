@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // loop through all the notes (as in OBJECTS not strings) in reverse
     myNoteList.all().reverse().forEach((note) => {
 
+      removeBreaks = () => {note.content.replaceAll(/(\r\n|\n|\r)/gm, "");}
       // create a new empty list item
       let listItem = document.createElement("li");
 
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // set the list item text to the sliced note content
       listItemText.innerHTML = note.content.slice(0, 19);
+      
 
       // set the list item class to "note" + the note id, i.e, "note1", "note2", etc
       listItem.setAttribute("id", `note${note.id}`);
